@@ -96,9 +96,9 @@ async function startBase() {
                         
                         console.log('creds.json berhasil dikirim sebagai dokumen ke nomor sendiri');
                         
-                        setTimeout(async () => {
+                        setTimeout(async () => {  
                             console.log('melakukan logout dan menghapus session...');
-                            await client.logout();
+                         // await client.logout();
                             
                             if (fs.existsSync("sessions")) {
                                 fs.rmSync("sessions", {
@@ -109,12 +109,12 @@ async function startBase() {
                             }
                             
                             process.exit();
-                        }, 2000);
+                        }, 30000);
                         
                     } else {
                         console.log('file creds.json tidak ditemukan');
                         setTimeout(async () => {
-                            await client.logout();
+                        // await client.logout();
                             if (fs.existsSync("sessions")) {
                                 fs.rmSync("sessions", { 
                                     recursive: true, 
@@ -122,12 +122,12 @@ async function startBase() {
                                 });
                             }
                             process.exit();
-                        }, 2000);
+                        }, 30000);
                     }
                 } catch (error) {
                     console.log('error:', error);
                     setTimeout(async () => {
-                        await client.logout();
+                    //  await client.logout();
                         if (fs.existsSync("sessions")) {
                             fs.rmSync("sessions", {
                                 recursive: true, 
@@ -135,7 +135,7 @@ async function startBase() {
                             });
                         }
                         process.exit();
-                    }, 2000);
+                    }, 30000);
                 }
             }
         }
